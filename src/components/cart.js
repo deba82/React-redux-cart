@@ -11,7 +11,7 @@ class App extends React.Component {
       <div>
         <Header />
         This is cart
-        <Footer />
+        <Footer value="Nocontent" />
       </div>
     );
   }

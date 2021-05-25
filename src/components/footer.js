@@ -5,7 +5,7 @@ class App extends React.Component {
     this.state = {};
   }
   render() {
-    return !this.props.value ? (
+    return !this.props.show ? (
       <div>
         <div className="alert alert-primary" role="alert">
           This is Home page
@@ -14,27 +14,22 @@ class App extends React.Component {
           List of added items added are
         </div>
         <ol className="list-group list-group-numbered">
-          <li className="list-group-item bg-success d-flex justify-content-between align-items-start">
-            <div className="ms-2 me-auto">
-              <div className="fw-bold">Subheading</div>
-              Cras justo odio
-            </div>
-            <span className="badge bg-primary rounded-pill">14</span>
-          </li>
-          <li className="list-group-item bg-success d-flex justify-content-between align-items-start">
-            <div className="ms-2 me-auto">
-              <div className="fw-bold">Subheading</div>
-              Cras justo odio
-            </div>
-            <span className="badge bg-primary rounded-pill">14</span>
-          </li>
-          <li className="list-group-item bg-success  d-flex justify-content-between align-items-start">
-            <div className="ms-2 me-auto">
-              <div className="fw-bold">Subheading</div>
-              Cras justo odio
-            </div>
-            <span className="badge bg-primary rounded-pill">14</span>
-          </li>
+          {Object.entries(this.props.value).map((index, i) => {
+            return (
+              <li
+                key={i}
+                className="list-group-item bg-success d-flex justify-content-between align-items-start"
+              >
+                <div className="ms-2 me-auto">
+                  <div className="fw-bold">{index[1]["name"]}</div>
+                  {index[1]["Price"]}
+                </div>
+                <span className="badge bg-primary rounded-pill">
+                  {index[1]["quantity"]}
+                </span>
+              </li>
+            );
+          })}
         </ol>
       </div>
     ) : (

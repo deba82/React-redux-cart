@@ -15,7 +15,7 @@ class App extends React.Component {
         </div>
         <ol className="list-group list-group-numbered">
           {Object.entries(this.props.value).map((index, i) => {
-            return (
+            return index[1]["quantity"] !== 0 ? (
               <li
                 key={i}
                 className="list-group-item bg-success d-flex justify-content-between align-items-start"
@@ -28,7 +28,7 @@ class App extends React.Component {
                   {index[1]["quantity"]}
                 </span>
               </li>
-            );
+            ) : null;
           })}
         </ol>
       </div>
